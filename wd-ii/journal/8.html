@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change CSS on Click</title>
+  <style>
+    p {
+      font-size: 16px;
+      color: black;
+      cursor: pointer;
+    }
+
+    .clicked {
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Paragraph to interact with -->
+  <p id="paragraph">Click me to change CSS, Double-click to hide</p>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+      $('#paragraph').click(function () {
+        $(this).toggleClass('clicked');
+      });
+
+      $('#paragraph').dblclick(function () {
+        $(this).hide();
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #location-info {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Geolocation Example</h1>
+    <button onclick="cmb()">Get My Location</button>
+    <div id="location-info"></div>
+    <script>
+        function cmb() {
+            if (navigator.geolocation) {
+                alert("Geolocation is supported by this browser.");
+                navigator.geolocation.getCurrentPosition(mycoords);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        function mycoords(position) {
+            var lat = position.coords.latitude;
+            var longt = position.coords.longitude;
+            var locationInfo = document.getElementById("location-info");
+            locationInfo.innerHTML = "<strong>Latitude:</strong> " + lat + "<br>" +
+                "<strong>Longitude:</strong> " + longt;
+            locationInfo.style.display = "block";
+        }
+    </script>
+</body>
+
+</html

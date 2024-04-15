@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Dimensional Methods Example</title>
+</head>
+<body>
+    <div id="box" style="width: 200px; height: 150px; border: 2px solid black; padding: 20px; margin: 20px;">
+        Click here to retrieve Information
+    </div>
+
+    <div id="info">
+        <p id="width"></p>
+        <p id="height"></p>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#box').click(function () {
+            var width = $(this).width();
+            var height = $(this).height();
+
+            $('#width').text('Width: ' + width);
+            $('#height').text('Height: ' + height);
+        });
+    });
+</script>
+
+</html>

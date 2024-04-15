@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with JS Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Contact Form</h2>
+
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <span id="emailError" class="error"></span><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        <span id="messageError" class="error"></span><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            // Resetting previous errors
+            document.getElementById('nameError').innerText = '';
+            document.getElementById('emailError').innerText = '';
+            document.getElementById('messageError').innerText = '';
+
+            // Name validation
+            if (name === '') {
+                document.getElementById('nameError').innerText = 'Name is required';
+                return false;
+            }
+
+            // Email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').innerText = 'Invalid email address';
+                return false;
+            }
+
+            // Message validation
+            if (message === '') {
+                document.getElementById('messageError').innerText = 'Message is required';
+                return false;
+            }
+
+            // Form is valid
+            alert('Form submitted successfully!');
+            return true;
+        }
+    </script>
+
+</body>
+</html>

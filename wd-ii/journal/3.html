@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using 'this' in JavaScript</title>
+    <style>
+        /* Stylesheet */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output"></div>
+    <button id="button1">Person 1</button>
+    <button id="button2">Person 2</button>
+    <script>
+        // Creating an object constructor function
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            // Method to greet
+            this.abc = function () {
+                document.getElementById("output").textContent = "Hello, my name is " + this.name + " and I am " + this.age + " years old.";
+            };
+        }
+        // Creating instances of the Person object
+        var person1 = new Person("Yahan", 30);
+        var person2 = new Person("Yara", 25);
+        // Event listeners for buttons to trigger greet method
+        document.getElementById("button1").addEventListener("click", function () {
+            person1.abc();
+        });
+        document.getElementById("button2").addEventListener("click", function () {
+            person2.abc();
+        });
+    </script>
+</body>
+
+</html>

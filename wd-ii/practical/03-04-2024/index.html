@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Using bind() and on() in jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2>This is a heading</h2>
+    <p>This is a paragraph</p>
+    <button id="myButton">Click me</button>
+    <script>
+        // Using bind() to attach a click event handler
+        $(document).ready(function () {
+            $("#myButton").bind("click", function () {
+                alert("Button clicked using bind()!");
+            });
+        });
+        // Using on() to attach a click event handler
+        $(document).ready(function () {
+            $("#myButton").on("click", function () {
+                alert("Button clicked using on()!");
+
+                // Highlight paragraph
+                $("p").addClass("highlight");
+            });
+        });
+    </script>
+</body>
+</html>

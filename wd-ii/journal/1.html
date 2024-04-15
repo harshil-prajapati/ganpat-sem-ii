@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Methods Demo</title>
+</head>
+
+<body>
+    <h1 id="title">Hello, World!</h1>
+    <p class="paragraph">This is a paragraph.</p>
+    <p class="paragraph">This is another paragraph.</p>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <script>
+        // Using getElementById
+        const titleElement = document.getElementById('title');
+        titleElement.textContent = 'Welcome to the DOM!';
+        // Using getElementsByClassName
+        const paragraphs = document.getElementsByClassName('paragraph');
+        for (let i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].style.fontWeight = 'bold';
+        }
+        // Using getElementsByTagName
+        const listItems = document.getElementsByTagName('li');
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].style.color = 'blue';
+        }
+    </script>
+</body>
+
+</html>

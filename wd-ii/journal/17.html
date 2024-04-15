@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Autocomplete</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        /* Styling for the autocomplete dropdown */
+        #city-list {
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            width: inherit;
+        }
+        .city-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .city-item:hover {
+            background-color: #ddd;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <h2>City Autocomplete</h2>
+    <label for="city-input">Enter City Name :</label>
+    <input type="text" id="city-input">
+    <div id="city-list"></div>
+
+    <script>
+        $(document).ready(function () {
+            function fetchCities(query) {
+                const cities = [
+                    "Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar",
+                    "Jamnagar", "Junagadh", "Gandhinagar", "Gandhidham", "Anand",
+                    "Navsari", "Surendranagar", "Morbi", "Bharuch", "Porbandar",
+                    "Godhra", "Veraval", "Vapi", "Nadiad", "Valsad"
+                ];
+
+                const filteredCities = cities.filter(city => city.toLowerCase().includes(query.toLowerCase()));
+                $("#city-list").empty();
+                filteredCities.forEach(city => {
+                    $("#city-list").append(`<div class="city-item">${city}</div>`);
+                });
+            }
+            $("#city-input").on("input", function () {
+                const query = $(this).val();
+                if (query.length >= 2) {
+                    fetchCities(query);
+                    $("#city-list").show();
+                } else {
+                    $("#city-list").hide();
+                }
+            });
+            $(document).on("click", ".city-item", function () {
+                const selectedCity = $(this).text();
+                $("#city-input").val(selectedCity);
+                $("#city-list").hide();
+            });
+            $(document).click(function (event) {
+                if (!$(event.target).closest("#city-list").length && !$(event.target).is("#city-input")) {
+                    $("#city-list").hide();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

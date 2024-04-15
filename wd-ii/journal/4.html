@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #e74c3c;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Error Handling Example</h2>
+    <form id="calculatorForm">
+        <label for="numerator">Numerator:</label>
+        <input type="text" id="numerator" name="numerator" required>
+        <label for="denominator">Denominator:</label>
+        <input type="text" id="denominator" name="denominator" required>
+        <button type="button" onclick="calculateResult()">Calculate</button>
+        <div id="result" class="result"></div>
+        <div id="error" class="error"></div>
+    </form>
+    <script>
+        function calculateResult() {
+            var numerator = document.getElementById("numerator").value;
+            var denominator = document.getElementById("denominator").value;
+            var resultElement = document.getElementById("result");
+            var errorElement = document.getElementById("error");
+            // Reset result and error messages
+            resultElement.textContent = "";
+            errorElement.textContent = "";
+            try {
+                // Convert input to numbers
+                numerator = parseFloat(numerator);
+                denominator = parseFloat(denominator);
+                // Check for NaN (not a number)
+                if (isNaN(numerator) || isNaN(denominator)) {
+                    throw new Error("Please enter valid numeric values");
+                }
+                // Check for division by zero
+                if (denominator === 0) {
+                    throw new Error("Division by zero is not allowed");
+                }
+                // Calculate result and display
+                var result = numerator / denominator;
+                resultElement.textContent = "Result: " + result.toFixed(2);
+            } catch (error) {
+                // Handle errors and display error message
+                errorElement.textContent = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+
+</html>

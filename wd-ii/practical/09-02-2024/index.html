@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TABLE</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            background-color: aqua;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .table_title{
+            text-align: center;
+            font-size: 75px;
+            /* border: 10px gold 3px; */
+            background-color: bisque;
+            margin-left: 200px;
+            margin-right: 200px;
+            border-radius: 10px;
+            margin-top: 70px;
+            margin-bottom: 40px;
+            padding: 7px;
+        }
+        table{
+            margin: auto;
+        }
+        button {
+            border-radius: 5px;
+            border-color: blue;
+            padding: 10px;
+            background-color: thistle;
+        }
+        tr, td, th{
+            border-radius: 10px;
+            border: 2px black solid;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+    
+        }
+        th{
+            font-size: 50px;
+            background-color: blueviolet;
+        }
+        td, td > button{
+            font-size: 35px;
+        }
+        td{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <h1 class="table_title">Student Data</h1>
+        <thead>
+            <tr>
+                <th>ROLL NO.</th>
+                <th>NAME</th>
+                <th>MOBILE NO.</th>
+                <th>UP/DOWN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class='row'>
+                <td>1078</td>
+                <td>Harshil</td>
+                <td class='mobile_no'>7801834727</td>
+                <td>
+                    <button value='up' class="up">Up</button>
+                    <button value='down' class="down">Down</button>
+                </td>
+            </tr>
+            <tr class='row'>
+                <td>1075</td>
+                <td>Bhaumik</td>
+                <td class='mobile_no'>8780886111</td>
+                <td><button value='up' class="up">Up</button> <button value='down' class="down">Down</button></td>
+            </tr>
+            <tr class='row'>
+                <td>1087</td>
+                <td>Harsh</td>
+                <td class='mobile_no'>9824150873</td>
+                <td><button value='up' class="up">Up</button> <button value='down' class='down'>Down</button></td>
+            </tr>
+            <tr class='row'>
+                <td>1095</td>
+                <td>Shubh</td>
+                <td class='mobile_no'>9054044060</td>
+                <td><button value='up' class="up">Up</button> <button value='down' class='down'>Down</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.up').on('click', function () {
+                var parent = $(this).parents(".row");
+                var parent_mobile_no = $(this).parents(".row:first").find('.mobile_no').val();
+                var prev_mobile_no = parent.prev('.row:first').find('.mobile_no').val();
+                parent.insertBefore(parent.prev(".row"));
+                $(this).parents(".row").find('.mobile_no').val(prev_mobile_no);
+                parent.prev('.row:first').find('.mobile_no').val(parent_mobile_no);
+            });
+            $('.down').on('click', function () {
+                var parent = $(this).parents(".row");
+                var parent_mobile_no = $(this).parents(".row").find('.mobile_no').val();
+                var next_mobile_no = parent.next('.row').find('.mobile_no').val();
+                parent.insertAfter(parent.next(".row"));
+                $(this).parents('.row').find('.mobile_no').val(next_mobile_no);
+                parent.prev('.row').find('.mobile_no').val(parent_mobile_no);
+            });
+        })
+    </script>
+</body>
+</html>

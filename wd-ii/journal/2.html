@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Validation Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Regex Validation Demo</h1>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+        <button onclick="validate()">Validate</button>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        // Regular expression patterns
+        const nameRegex = /^[a-zA-Z\s]+$/; // Allows only alphabets and spaces
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation
+        const phoneRegex = /^\d{10}$/; // Allows 10 digits
+        // Function to validate input
+        function validate() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const nameValid = nameRegex.test(name);
+            const emailValid = emailRegex.test(email);
+            const phoneValid = phoneRegex.test(phone);
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = "";
+            if (!nameValid) {
+                resultElement.innerHTML += "<div class='invalid'>Invalid name</div>";
+            }
+            if (!emailValid) {
+                resultElement.innerHTML += "<div class='invalid'>Invalid email</div>";
+            }
+            if (!phoneValid) {
+                resultElement.innerHTML += "<div class='invalid'>Invalid phone number</div>";
+            }
+            if (nameValid && emailValid && phoneValid) {
+                resultElement.innerHTML = "<div class='valid'>All inputs are valid</div>";
+            }
+        }
+    </script>
+</body>
+
+</html>

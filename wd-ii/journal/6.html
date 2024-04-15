@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 6</title>
+    <style>
+        #first{
+            width: 250px;
+            height: 250px;
+            border: 2px solid black;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 34px;
+            padding: 34px;
+        }
+        img{
+            display: inline-block;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+    <script>
+        function drag(ev){
+            ev.dataTransfer.setData("text",ev.target.id);
+        }
+
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+
+        function drop(ev){
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <!-- Write a JavaScript program to drag and drop functionality implemented using HTML, CSS, and JavaScript: -->
+    <h2>Drag and Drop</h2>
+
+    <div id="first" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+
+    <img src="img/ganpat.png" width="180px" alt="error" draggable="true" ondragstart="drag(event)" id="testimg">
+
+    
+</body>
+</html>

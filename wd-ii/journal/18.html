@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Background to <h1> Elements</title>
+</head>
+
+<body>
+
+    <h1>Heading 1 Outside div</h1>
+    <div class="colored-div">
+        <h1>Heading 1 inside div</h1>
+        <p>This is a paragraph inside div.</p>
+    </div>
+
+    <script>
+        var divs = document.querySelectorAll('div.colored-div');
+        divs.forEach(function (div) {
+            var h1 = div.querySelector('h1');
+            if (h1) {
+                h1.style.backgroundColor = 'blue';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

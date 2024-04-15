@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Transformation with Triangle</title>
+  <style>
+    .container {
+      perspective: 1000px;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid #f00;
+      position: relative;
+      top: 50px;
+      left: 50px;
+      transform-style: preserve-3d;
+      animation: rotateTriangle 5s infinite linear;
+    }
+
+    @keyframes rotateTriangle {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="triangle"></div>
+  </div>
+
+</body>
+</html>

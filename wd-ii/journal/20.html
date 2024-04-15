@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Background Color</title>
+    <style>
+        .colored-div {
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            border: 1px solid black;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="colored-div red"></div>
+    <div class="colored-div green"></div>
+
+    <p id="colorDisplay"> Color :<br></p>
+
+    <script>
+        var coloredDivs = document.querySelectorAll('.colored-div');
+        var colorDisplay = document.getElementById('colorDisplay');
+
+        coloredDivs.forEach(function (div) {
+            var bgColor = getComputedStyle(div).backgroundColor;
+            var textNode = document.createTextNode(bgColor);
+            colorDisplay.appendChild(textNode);
+            colorDisplay.appendChild(document.createElement('br'));
+        });
+    </script>
+
+</body>
+
+</html>

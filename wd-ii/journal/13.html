@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Effects Example</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <style>
+        #myParagraph {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 1s;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .slide-down {
+            height: auto;
+            transition: height 1s;
+        }
+
+        .slide-up {
+            height: 0;
+            transition: height 1s;
+        }
+
+        .highlight {
+            background-color: #ffff99;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="effectSelect">Select Effect:</label>
+    <select id="effectSelect">
+        <option value="fade-in">Fade In</option>
+        <option value="fade-out">Fade Out</option>
+        <option value="slide-down">Slide Down</option>
+        <option value="slide-up">Slide Up</option>
+        <option value="highlight">Highlight</option>
+    </select>
+    <p id="myParagraph">This is a paragraph. Select an effect from the dropdown to apply it.</p>
+
+    <script>
+        $(document).ready(function () {
+            $("#effectSelect").change(function () {
+                var selectedEffect = $(this).val();
+                var paragraph = $("#myParagraph");
+                paragraph.removeClass("fade-in fade-out slide-down slide-up highlight");
+                paragraph.addClass(selectedEffect);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
