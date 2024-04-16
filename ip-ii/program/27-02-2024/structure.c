@@ -1,0 +1,1 @@
+// Write a C program to make the following structure and read the value for member elements of structure and also print the same on the screen. The structure tag is ‘book’ and members' names are bookno, bookname, author, quantity, and price.
